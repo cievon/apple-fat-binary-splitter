@@ -10,7 +10,7 @@ When developing software for the Apple platform, we often need to split the arch
 
 Split all architectures for the library
 
-用法：
+Usage:
 
 ```shell
 ./library-splitter.sh xx.a
@@ -32,7 +32,7 @@ Usage:
 
 Split all architectures for the framework
 
-用法：
+Usage:
 
 ```shell
 ./framework-splitter.sh xx.framework
@@ -44,7 +44,7 @@ Split all architectures for the framework
 
 To remove an architecture in the framework, specify the removal of an architecture by modifying the TARGET_ARCHS variable in the sh file
 
-用法：
+Usage:
 
 ```
 ./framework-remove.sh xx.framework
