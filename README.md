@@ -42,7 +42,7 @@ Usage:
 
 ### framework-remove.sh
 
-To remove an architecture in the framework, specify the removal of an architecture by modifying the `TARGET_ARCHS  `  variable in the sh file
+To remove an architecture in the framework, specify the removal of an architecture by modifying the `TARGET_ARCHS  `variable in the sh file
 
 Usage:
 

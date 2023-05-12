@@ -44,7 +44,7 @@ echo "......【Start splitting】......"
 for TARGET_ARCH in ${TARGET_ARCHS[@]}
 do
     if [[ ! "${SUPPORT_ARCHS[@]}" =~ "$TARGET_ARCH" ]]; then
-        echo "library不包含 $TARGET_ARCH 架构，继续..."
+        echo "library does not contain $TARGET_ARCH architecture, continue..."
         continue
     fi
     

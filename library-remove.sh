@@ -39,7 +39,7 @@ TARGET_LIBRARY_DIR="$TARGET_DIR/$TARGET_LIBRARY_NAME"
 SUPPORT_ARCHS=$(lipo -info "$TARGET_LIBRARY_DIR" | awk -F ': ' '{print $NF}')
 echo "The architecture supported by this library：$SUPPORT_ARCHS"
 
-echo "......【开始移除】......"
+echo "......【Start removing】......"
 # Remove the library of the target CPU architecture from the library
 for TARGET_ARCH in ${TARGET_ARCHS[@]}
 do
