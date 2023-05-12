@@ -1,17 +1,17 @@
 #!/bin/sh
 
-# 获取当前脚本所在目录，作为 TARGET_DIR 变量值
+# Gets the directory where the current script is located as the TARGET_DIR variable value
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 TARGET_DIR="$SCRIPT_DIR/library-remove"
 
-# 声明变量
+# Declare a variable
 TARGET_ARCHS=("armv7" "i386" "x86_64" "arm64")
 
 INPUT_LIBRARY="$1"
 
-# 判断输入的 library 是否正确
+# Check whether the library you entered is correct
 if [[ -z "$INPUT_LIBRARY" ]]; then
-  echo "Usage: ./library-splitter.sh input_library_path"
+  echo "Usage: ./library-remove.sh input_library_path"
   exit 1
 fi
 
@@ -20,32 +20,32 @@ if [[ ! -e "$INPUT_LIBRARY" ]]; then
   exit 1
 fi
 
-# 创建输出目录
+# Create Output Directory
 mkdir -p "$TARGET_DIR"
 
-# 拷贝 library 文件
+# Copy the library file
 cp -R "$INPUT_LIBRARY" "$TARGET_DIR"
 
-# 进入到要处理的 library 所在目录
+# Go to the directory where the library is to be processed
 cd "$TARGET_DIR"
 
-#获取library的文件名
+# Gets the file name of the library
 TARGET_LIBRARY_NAME=$(basename $INPUT_LIBRARY)
 
-#获取目标library的路径
+# Gets the path to the target library
 TARGET_LIBRARY_DIR="$TARGET_DIR/$TARGET_LIBRARY_NAME"
 
-# 将支持的架构信息保存到变量中
+# Save supported architecture information to a variable
 SUPPORT_ARCHS=$(lipo -info "$TARGET_LIBRARY_DIR" | awk -F ': ' '{print $NF}')
-echo "该 library 支持的架构：$SUPPORT_ARCHS"
+echo "The architecture supported by this library：$SUPPORT_ARCHS"
 
-echo "......【开始拆分】......"
-# 拆分为目标 CPU 架构的 library，并删除原文件
+echo "......【开始移除】......"
+# Remove the library of the target CPU architecture from the library
 for TARGET_ARCH in ${TARGET_ARCHS[@]}
 do
     SUPPORT_ARCHS=$(lipo -info "$TARGET_LIBRARY_DIR" | awk -F ': ' '{print $NF}')
     if [[ ! "${SUPPORT_ARCHS[@]}" =~ "$TARGET_ARCH" ]]; then
-        echo "library不包含 $TARGET_ARCH 架构，继续..."
+        echo "library does not contain $TARGET_ARCH architecture, continue..."
         continue
     fi
     
