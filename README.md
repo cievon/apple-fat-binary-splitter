@@ -18,7 +18,7 @@ Usage:
 
 ### library-remove.sh
 
-To remove a architecture in the library, specify the removal of a schema by modifying the TARGET_ARCHS variable in the sh file
+To remove a architecture in the library, specify the removal of a schema by modifying the `TARGET_ARCHS` variable in the sh file
 
 Usage:
 
@@ -42,7 +42,7 @@ Usage:
 
 ### framework-remove.sh
 
-To remove an architecture in the framework, specify the removal of an architecture by modifying the TARGET_ARCHS variable in the sh file
+To remove an architecture in the framework, specify the removal of an architecture by modifying the `TARGET_ARCHS  `  variable in the sh file
 
 Usage:
 
